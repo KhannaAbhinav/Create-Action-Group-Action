@@ -21,7 +21,6 @@ async function main(): Promise<void> {
 
     const octokit = new github.GitHub(gitHubToken, {baseUrl: gitHubRepo})
 
-    console.log(await octokit.request(gitHubRepo))
     console.log(
       await octokit.repos.getContents({
         owner: gitHubRepoOwner,
