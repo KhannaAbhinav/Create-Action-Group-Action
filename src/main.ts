@@ -19,7 +19,7 @@ async function main(): Promise<void> {
     console.debug(`Path :  ${path}`)
     console.debug(`ActionGroupInputs :  ${actionGroupInputs}`)
 
-    const octokit = new github.GitHub(gitHubToken, {baseUrl: gitHubRepo})
+    const octokit = new github.GitHub(gitHubToken)
 
     console.log(
       await octokit.repos.getContents({
