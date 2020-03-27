@@ -12,6 +12,6 @@ jobs:
         uses: "./"
         with:
             GitHubRepo:  https://github.com/KhannaAbhinav/shared-action-groups-repo.git
-            GitHubToken: ${{ secret.access_token }}
+            GitHubToken: ${{ secrets.access_token }}
             
 
