@@ -2175,6 +2175,7 @@ function main() {
             const gitHubRepo = core.getInput('GitHubRepo');
             const gitHubRepoOwner = core.getInput('GitHubRepoOwner');
             const gitHubRepoName = core.getInput('GitHubRepoName');
+            const gitHubRepoBranch = core.getInput('GitHubRepoBranch');
             const gitHubToken = core.getInput('GitHubToken');
             const path = core.getInput('Path');
             let actionGroupInputs = {};
@@ -2184,13 +2185,15 @@ function main() {
             console.debug(`GitHubRepo :  ${gitHubRepo}`);
             console.debug(`GitHubRepoOwner :  ${gitHubRepoOwner}`);
             console.debug(`GitHubRepoName :  ${gitHubRepoName}`);
+            console.debug(`GitHubRepoBranch :  ${gitHubRepoBranch}`);
             console.debug(`Path :  ${path}`);
             console.debug(`ActionGroupInputs :  ${actionGroupInputs}`);
             const octokit = new github.GitHub(gitHubToken);
             console.log(yield octokit.repos.getContents({
                 owner: gitHubRepoOwner,
                 repo: gitHubRepoName,
-                path
+                path,
+                ref: gitHubRepoBranch !== "" ? gitHubRepoBranch : undefined
             }));
             // octokit.repos.getContents({path: path})
         }

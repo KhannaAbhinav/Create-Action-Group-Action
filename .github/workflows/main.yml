@@ -17,3 +17,4 @@ jobs:
             GitHubRepoOwner: KhannaAbhinav
             ActionGroupInputs: "{\"echoInput\" : \"abhinav\" }"
             Path: "action.group1.yml"
+            

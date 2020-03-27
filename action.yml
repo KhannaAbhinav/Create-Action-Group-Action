@@ -3,9 +3,16 @@ author: Abhinav Khanna
 description: Prints Number of commits for files in the repo.
 
 inputs: 
-  GitHubRepo:
-    description: Specifies a shared Git Repo that hosts reusable action groups
+  GitHubRepoOwner:
+    description: Specifies owner of the shared Git Repo that hosts reusable action groups
     required: True
+  GitHubRepoName:
+    description: Specifies name of the shared Git Repo that hosts reusable action groups
+    required: True
+  GitHubRepoBranch: 
+    description: Specifies name of the shared Git Repo Branch that hosts reusable action groups
+    required: false
+    default: Null
   GitHubToken: 
     description: Access token to access the shared GitHub_Repo
     required: True
@@ -16,6 +23,8 @@ inputs:
     description: String representation of map of inputs to the action group.
     required: False
     default: Null
+  
+  
 outputs:
   ActionGroupOutputs:
     description: String representation of map of outputs from the action group.

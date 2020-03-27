@@ -6,8 +6,10 @@ async function main(): Promise<void> {
     const gitHubRepo = core.getInput('GitHubRepo')
     const gitHubRepoOwner = core.getInput('GitHubRepoOwner')
     const gitHubRepoName = core.getInput('GitHubRepoName')
+    const gitHubRepoBranch = core.getInput('GitHubRepoBranch')
     const gitHubToken = core.getInput('GitHubToken')
     const path = core.getInput('Path')
+
     let actionGroupInputs = {}
     if (null != core.getInput('ActionGroupInputs') || core.getInput('ActionGroupInputs') !== '') {
       actionGroupInputs = JSON.parse(core.getInput('ActionGroupInputs'))
@@ -16,6 +18,7 @@ async function main(): Promise<void> {
     console.debug(`GitHubRepo :  ${gitHubRepo}`)
     console.debug(`GitHubRepoOwner :  ${gitHubRepoOwner}`)
     console.debug(`GitHubRepoName :  ${gitHubRepoName}`)
+    console.debug(`GitHubRepoBranch :  ${gitHubRepoBranch}`)
     console.debug(`Path :  ${path}`)
     console.debug(`ActionGroupInputs :  ${actionGroupInputs}`)
 
@@ -25,7 +28,8 @@ async function main(): Promise<void> {
       await octokit.repos.getContents({
         owner: gitHubRepoOwner,
         repo: gitHubRepoName,
-        path
+        path,
+        ref: gitHubRepoBranch !== '' ? gitHubRepoBranch : undefined
       })
     )
 
