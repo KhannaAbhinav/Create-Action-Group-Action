@@ -2173,6 +2173,8 @@ function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const gitHubRepo = core.getInput('GitHubRepo');
+            const gitHubRepoOwner = core.getInput('GitHubRepoOwner');
+            const gitHubRepoName = core.getInput('GitHubRepoName');
             const gitHubToken = core.getInput('GitHubToken');
             const path = core.getInput('Path');
             let actionGroupInputs = {};
@@ -2180,12 +2182,17 @@ function main() {
                 actionGroupInputs = JSON.parse(core.getInput('ActionGroupInputs'));
             }
             console.debug(`GitHubRepo :  ${gitHubRepo}`);
+            console.debug(`GitHubRepoOwner :  ${gitHubRepoOwner}`);
+            console.debug(`GitHubRepoName :  ${gitHubRepoName}`);
             console.debug(`Path :  ${path}`);
             console.debug(`ActionGroupInputs :  ${actionGroupInputs}`);
             const octokit = new github.GitHub(gitHubToken, { baseUrl: gitHubRepo });
             console.log(yield octokit.request(gitHubRepo));
-            console.log(yield octokit.git.getTree());
-            console.log(yield octokit.repos.get());
+            console.log(yield octokit.repos.getContents({
+                owner: gitHubRepoOwner,
+                repo: gitHubRepoName,
+                path
+            }));
             // octokit.repos.getContents({path: path})
         }
         catch (error) {
