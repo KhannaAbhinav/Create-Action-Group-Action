@@ -11,8 +11,7 @@ inputs:
     required: True
   Path:
     description: Path to Reusable Action Group in the common GitHub Repo
-    required: False
-    default: "."
+    required: True
   ActionGroupInputs:
     description: String representation of map of inputs to the action group.
     required: False
