@@ -2176,8 +2176,9 @@ function main() {
             const gitHubToken = core.getInput('GitHubToken');
             const path = core.getInput('Path');
             let actionGroupInputs = {};
-            if (null != core.getInput('ActionGroupInputs'))
+            if (null != core.getInput('ActionGroupInputs') || core.getInput('ActionGroupInputs') !== "") {
                 actionGroupInputs = JSON.parse(core.getInput('ActionGroupInputs'));
+            }
             console.debug(`GitHubRepo :  ${gitHubRepo}`);
             console.debug(`Path :  ${path}`);
             console.debug(`ActionGroupInputs :  ${actionGroupInputs}`);

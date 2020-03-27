@@ -13,5 +13,4 @@ jobs:
         with:
             GitHubRepo:  https://github.com/KhannaAbhinav/shared-action-groups-repo.git
             GitHubToken: ${{ secrets.access_token }}
-            
-
+            ActionGroupInputs: "{\"echoInput\" : \"abhinav\""
