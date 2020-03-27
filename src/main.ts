@@ -34,7 +34,7 @@ async function main(): Promise<void> {
     if (status >= 200 || status < 300) {
       if (!Array.isArray(response)) {
         const fileContent: string = response.content ? response.content : ''
-        console.log(Buffer.from(fileContent, 'base64'))
+        console.log(Buffer.from(fileContent, 'base64').toString('utf-8'))
       } else {
         core.setFailed('Path might be pointing to a directory. Please provide a file path.')
       }
