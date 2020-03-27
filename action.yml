@@ -1,0 +1,30 @@
+name: Create Actiom Group
+author: Abhinav Khanna
+description: Prints Number of commits for files in the repo.
+
+inputs: 
+  GitHubRepo:
+    description: Specifies a shared Git Repo that hosts reusable action groups
+    required: True
+  GitHubToken: 
+    description: Access token to access the shared GitHub_Repo
+    required: True
+  Path:
+    description: Path to Reusable Action Group in the common GitHub Repo
+    required: False
+    default: "."
+  ActionGroupInputs:
+    description: String representation of map of inputs to the action group.
+    required: False
+    default: Null
+outputs:
+  ActionGroupOutputs:
+    description: String representation of map of outputs from the action group.
+  
+runs:
+  using: 'node12'
+  main:  'dist/index.js'
+
+branding:
+  icon: 'grid'  
+  color: 'blue'

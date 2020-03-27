@@ -1,0 +1,17 @@
+name: Reusable Action Group template
+
+inputs:
+  key1: value1
+  key2: value2
+  key3: value3
+
+steps:
+  - name: Checkout Files
+    uses: actions/checkout@v1
+  - name: Call Action Group from shared repo
+    id: ActiomGroup1
+    uses: "./"
+
+outputs:
+  output1: ${{steps.<id>.key1}}
+  output2: ${{steps.<id>.key2}}

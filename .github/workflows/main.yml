@@ -1,0 +1,17 @@
+name: A workflow for call reusable action group
+on: push
+jobs:
+  build:
+    name: File Leaderboard Action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Files
+        uses: actions/checkout@v1
+      - name: Call Action Group from shared repo
+        id: ActiomGroup1
+        uses: "./"
+        with:
+            GitHubRepo:  https://github.com/KhannaAbhinav/shared-action-groups-repo.git
+            GitHubToken: ${{ secret.access_token }}
+            
+
