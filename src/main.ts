@@ -6,7 +6,8 @@ async function main(): Promise<void> {
     const gitHubRepo = core.getInput('GitHubRepo')
     const gitHubToken = core.getInput('GitHubToken')
     const path = core.getInput('Path')
-    const actionGroupInputs = JSON.parse(core.getInput('ActionGroupInputs'))
+    let actionGroupInputs = {}
+    if (null != core.getInput('ActionGroupInputs')) actionGroupInputs = JSON.parse(core.getInput('ActionGroupInputs'))
 
     console.debug(`GitHubRepo :  ${gitHubRepo}`)
     console.debug(`Path :  ${path}`)
