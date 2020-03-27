@@ -17,10 +17,9 @@ async function main(): Promise<void> {
 
     const octokit = new github.GitHub(gitHubToken, {baseUrl: gitHubRepo})
 
-    console.log(octokit)
-    console.log(octokit.request(gitHubRepo))
-    console.log(octokit.git.getTree())
-    console.log(octokit.repos.get())
+    console.log(await octokit.request(gitHubRepo))
+    console.log(await octokit.git.getTree())
+    console.log(await octokit.repos.get())
 
     // octokit.repos.getContents({path: path})
   } catch (error) {

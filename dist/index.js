@@ -2176,17 +2176,16 @@ function main() {
             const gitHubToken = core.getInput('GitHubToken');
             const path = core.getInput('Path');
             let actionGroupInputs = {};
-            if (null != core.getInput('ActionGroupInputs') || core.getInput('ActionGroupInputs') !== "") {
+            if (null != core.getInput('ActionGroupInputs') || core.getInput('ActionGroupInputs') !== '') {
                 actionGroupInputs = JSON.parse(core.getInput('ActionGroupInputs'));
             }
             console.debug(`GitHubRepo :  ${gitHubRepo}`);
             console.debug(`Path :  ${path}`);
             console.debug(`ActionGroupInputs :  ${actionGroupInputs}`);
             const octokit = new github.GitHub(gitHubToken, { baseUrl: gitHubRepo });
-            console.log(octokit);
-            console.log(octokit.request(gitHubRepo));
-            console.log(octokit.git.getTree());
-            console.log(octokit.repos.get());
+            console.log(yield octokit.request(gitHubRepo));
+            console.log(yield octokit.git.getTree());
+            console.log(yield octokit.repos.get());
             // octokit.repos.getContents({path: path})
         }
         catch (error) {
