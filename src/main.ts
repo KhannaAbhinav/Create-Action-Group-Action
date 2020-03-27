@@ -29,7 +29,7 @@ async function main(): Promise<void> {
         owner: gitHubRepoOwner,
         repo: gitHubRepoName,
         path,
-        ref: gitHubRepoBranch !== '' ? gitHubRepoBranch : undefined
+        ref: gitHubRepoBranch
       })
     )
 

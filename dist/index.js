@@ -2193,7 +2193,7 @@ function main() {
                 owner: gitHubRepoOwner,
                 repo: gitHubRepoName,
                 path,
-                ref: gitHubRepoBranch !== "" ? gitHubRepoBranch : undefined
+                ref: gitHubRepoBranch
             }));
             // octokit.repos.getContents({path: path})
         }

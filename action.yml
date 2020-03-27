@@ -12,7 +12,7 @@ inputs:
   GitHubRepoBranch: 
     description: Specifies name of the shared Git Repo Branch that hosts reusable action groups
     required: false
-    default: Null
+    default: "master"
   GitHubToken: 
     description: Access token to access the shared GitHub_Repo
     required: True
