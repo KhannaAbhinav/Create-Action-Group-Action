@@ -1,6 +1,7 @@
 import * as core from '@actions/core'
 import * as github from '@actions/github'
-
+import {ActionGroup} from './typings/actiongroup'
+import * as yaml from 'js-yaml'
 async function main(): Promise<void> {
   try {
     const gitHubRepo = core.getInput('GitHubRepo')
@@ -33,8 +34,17 @@ async function main(): Promise<void> {
 
     if (status >= 200 || status < 300) {
       if (!Array.isArray(response)) {
-        const fileContent: string = response.content ? response.content : ''
-        console.log(Buffer.from(fileContent, 'base64').toString('utf-8'))
+        if (response.content) {
+          const fileContent: string = Buffer.from(response.content, 'base64').toString('utf-8')
+          console.log(fileContent)
+          console.log(github.context)
+          const actionGroupData: ActionGroup = yaml.safeLoad(fileContent) as ActionGroup
+          console.log(actionGroupData.inputs)
+          console.log(actionGroupData.outputs)
+          console.log(actionGroupData.steps)
+        } else {
+          core.setFailed('File Content is not good. Please check the file.')
+        }
       } else {
         core.setFailed('Path might be pointing to a directory. Please provide a file path.')
       }

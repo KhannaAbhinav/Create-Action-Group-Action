@@ -8,6 +8,7 @@
     "@actions/github": "^2.1.1",
     "@octokit/rest": "^17.1.4",
     "@octokit/webhooks": "^7.1.1",
+    "@types/js-yaml": "^3.12.3",
     "octokit": "^1.0.0-hello-world"
   },
   "devDependencies": {
